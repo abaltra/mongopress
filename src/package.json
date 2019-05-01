@@ -1,0 +1,27 @@
+{
+  "name": "mongopress",
+  "version": "1.0.0",
+  "description": "Simple blogging platform built with NodeJS + MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ACCESS_TOKEN_HEADER_KEY=X-Authentication MONGO_URL=mongodb://localhost:27017/mongopress HASHING_SALT=asecret node -r esm index.js"
+  },
+  "keywords": [
+    "blog",
+    "mongo",
+    "node"
+  ],
+  "author": "Alejandro Baltra (abaltra@billtrust.com)",
+  "license": "ISC",
+  "dependencies": {
+    "@types/mongoose": "^5.3.27",
+    "body-parser": "^1.18.3",
+    "esm": "^3.2.22",
+    "express": "^4.16.4",
+    "helmet": "^3.16.0",
+    "mongoose": "^5.5.4",
+    "morgan": "^1.9.1",
+    "uuid": "^3.3.2"
+  }
+}
