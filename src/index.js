@@ -8,7 +8,7 @@ import mongoose from 'mongoose'
 
 const app = new express();
 
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
+mongoose.connect(`${process.env.MONGO_URL}/mongopress` , { useNewUrlParser: true });
 mongoose.set("useCreateIndex", true);
 
 // set middlewares

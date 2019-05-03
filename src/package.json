@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ACCESS_TOKEN_HEADER_KEY=X-Authentication MONGO_URL=mongodb://localhost:27017/mongopress HASHING_SALT=asecret node -r esm index.js"
+    "dev": "ACCESS_TOKEN_HEADER_KEY=X-Authentication HASHING_SALT=asecret node -r esm index.js"
   },
   "keywords": [
     "blog",
@@ -15,7 +15,6 @@
   "author": "Alejandro Baltra (abaltra@billtrust.com)",
   "license": "ISC",
   "dependencies": {
-    "@types/mongoose": "^5.3.27",
     "body-parser": "^1.18.3",
     "esm": "^3.2.22",
     "express": "^4.16.4",

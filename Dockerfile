@@ -5,7 +5,6 @@ COPY ./src /app
 
 RUN npm install
 
-ENV WEB_PORT 3000
 EXPOSE 3000
 
-ENTRYPOINT [ "npm run start" ]
+CMD [ "npm", "run", "dev" ]
