@@ -1,0 +1,10 @@
+FROM node:11-slim
+
+WORKDIR /app
+# COPY ./frontend /app
+
+RUN npm install -g @vue/cli
+
+EXPOSE 8080
+
+CMD [ "npm", "run", "serve" ]

@@ -1,4 +1,5 @@
 import { model, Schema } from 'mongoose';
+import { ObjectId } from 'bson';
 
 const schema = new Schema({
     username: {
@@ -31,7 +32,17 @@ const schema = new Schema({
     accessToken: {
         type: String,
         index: true
-    }
+    },
+    likedPosts: [
+        {
+            type: Schema.Types.ObjectId, ref: "Post"
+        }
+    ],
+    dislikedPosts: [
+        {
+            type: Schema.Types.ObjectId, ref: "Post"
+        }
+    ]
 });
 
 const userModel = model('User', schema);

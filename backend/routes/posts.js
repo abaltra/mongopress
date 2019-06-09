@@ -27,7 +27,6 @@ async function list (req, res, next) {
 }
 
 async function add (req, res, next) {
-    console.log(req.body);
     const newPost = new Post(req.body);
     try {
         const savedPost = await newPost.save();
@@ -59,7 +58,36 @@ async function remove (req, res, next) {
 }
 
 async function update (req, res, next) {
-    return res.send("updating post");
+    let id = req.params.id;
+    let post = await Post.findById(id, { _id: 1 })
+    if (!post)
+    {
+        return res.status(404).send();
+    }
+
+    await Post.findOneAndUpdate({ _id: id }, { $set: { body: req.body.body, updatedAt: Date.now() } });
+    return res.status(201);
+}
+
+async function view (req, res, next)
+{
+    let id = req.params.id;
+    await Post.updateOne({ _id: id }, { $inc: { "stats.views": 1 } }, { w: 0 });
+    return res.status(201).send();
+}
+
+async function like (req, res, next)
+{
+    let id = req.params.id;
+    await Post.updateOne({ _id: id }, { $inc: { "stats.likes": 1 } }, { w: 0 });
+    return res.status(201).send();
+}
+
+async function dislike (req, res, next)
+{
+    let id = req.params.id;
+    await Post.updateOne({ _id: id }, { $inc: { "stats.likes": -1 } }, { w: 0 });
+    return res.status(201).send();
 }
 
 export default {
@@ -67,5 +95,8 @@ export default {
     list,
     add,
     remove,
-    update
+    update,
+    view,
+    like,
+    dislike
 }

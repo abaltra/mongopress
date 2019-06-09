@@ -1,7 +1,7 @@
 FROM node:11-slim
 
 WORKDIR /app
-COPY ./src /app
+COPY ./backend /app
 
 RUN npm install
 

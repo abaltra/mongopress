@@ -1,23 +1,23 @@
 version: '3'
 services:
-  mongo:
-    image: 'mongo'
-    ports:
-      - '27017:27017'
-    volumes:
-      - 'mongo:/data/db'
+  # mongo:
+  #   image: 'mongo'
+  #   ports:
+  #     - '27017:27017'
+  #   volumes:
+  #     - 'mongo:/data/db'
 
   node:
     tty: true
     stdin_open: true
-    depends_on:
-      - 'mongo'
+    # depends_on:
+    #   - 'mongo'
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - '3000:3000'
     environment:
-      - MONGO_URL=mongodb://mongo:27017
-volumes:
-  mongo:
+      - MONGO_URL='mongodb+srv://abaltra:nb5912AX4018!@cluster0-ctb0m.gcp.mongodb.net/mongopress?retryWrites=true&w=majority'
+# volumes:
+#   mongo:
